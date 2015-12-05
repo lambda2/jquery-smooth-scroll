@@ -1,10 +1,30 @@
 # Smooth Scroll Plugin
 
+Allows for easy implementation of smooth scrolling for same-page links.
+
+[![NPM](https://nodei.co/npm/jquery-smooth-scroll.png?compact=true)](https://npmjs.org/package/jquery-smooth-scroll)
+
+## Download
+
+Using npm:
+
+```bash
+npm install jquery-smooth-scroll
+```
+
+The old-fashioned way:
+
+Go to the following URL in your browser and copy/paste the code into your own file:
+https://raw.githubusercontent.com/kswedberg/jquery-smooth-scroll/master/jquery.smooth-scroll.js
+
+## Demo
+
+You can try a bare-bones demo at [kswedberg.github.io/jquery-smooth-scroll/demo/](https://kswedberg.github.io/jquery-smooth-scroll/demo/)
+
 ## Features
 
 ### $.fn.smoothScroll
 
-* Allows for easy implementation of smooth scrolling for same-page links.
 * Works like this: `$('a').smoothScroll();`
 * Specify a containing element if you want: `$('#container a').smoothScroll();`
 * Exclude links if they are within a containing element: `$('#container a').smoothScroll({excludeWithin: ['.container2']});`
@@ -37,10 +57,18 @@ The following options, shown with their default values, are available for both `
   // `this` is the triggering element
   afterScroll: function() {},
   easing: 'swing',
+
+  // speed can be a number or 'auto'
+  // if 'auto', the speed will be calculated based on the formula:
+  // (current scroll position - target scroll position) / autoCoeffic
   speed: 400,
 
-  // coefficient for "auto" speed
-  autoCoefficent: 2
+  // autoCoefficent: Only used when speed set to "auto".
+  // The higher this number, the faster the scroll speed
+  autoCoefficient: 2,
+
+  // $.fn.smoothScroll only: whether to prevent the default click action
+  preventDefault: true
 
 }
 ```
@@ -50,6 +78,11 @@ The options object for `$.fn.smoothScroll` can take two additional properties:
 selectors, DOM elements or jQuery objects. Default value for both is an
 empty array.
 
+#### Setting options after initial call
+
+If you need to change any of the options after you've already called `.smoothScroll()`,
+you can do so by passing the `"options"` string as the first argument and an
+options object as the second.
 
 ### $.smoothScroll
 
@@ -81,7 +114,7 @@ for `$.smoothScroll`:
 {
   // jQuery set of elements you wish to scroll.
   //  if null (default), $('html, body').firstScrollable() is used.
-  scrollElement: null,
+  scrollElement: null
 }
 ```
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>jQuery <%= pkg.title %> Plugin</title>
+  <title><%= pkg.title %> Plugin</title>
   <style>
   html,
   body {
@@ -31,6 +31,30 @@
   }
   code {
     font-family: Monaco, Courier, monospace;
+  }
+  .comment,
+  .comments {
+    color: #aaa;
+  }
+  .keyword {
+    color: blue;
+  }
+  .string {
+    color: #090;
+  }
+  .number {
+    color: #099;
+  }
+
+  td.gutter {
+    text-align: right;
+    padding-right: 3px;
+    padding-left: 3px;
+    background-color: #ddd;
+    color: #aaa;
+  }
+  td.code {
+    padding-left: 5px;
   }
   h1, h2, h3 {
     font-weight: normal;
